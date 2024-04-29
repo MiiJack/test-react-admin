@@ -1,6 +1,16 @@
-import { List, Datagrid, TextField, Show, SimpleShowLayout } from "react-admin";
+import {
+  List,
+  Datagrid,
+  TextField,
+  Show,
+  SimpleShowLayout,
+  SimpleForm,
+  Edit,
+  TextInput,
+} from "react-admin";
 import { useParams } from "react-router-dom";
-import { DetailButton } from "../components/Buttons";
+import { DetailButton, EditButton } from "../../components/Buttons";
+import React from "react";
 
 export const CommentList = () => {
   const { id } = useParams();
@@ -11,6 +21,7 @@ export const CommentList = () => {
         <TextField source="name" />
         <TextField source="email" />
         <DetailButton />
+        <EditButton />
       </Datagrid>
     </List>
   );
@@ -26,5 +37,19 @@ export const CommentShow = () => {
         <TextField source="body" />
       </SimpleShowLayout>
     </Show>
+  );
+};
+
+export const CommentEdit = () => {
+  const { commentId } = useParams();
+  return (
+    <Edit resource="Comments" id={commentId}>
+      <SimpleForm>
+        <TextInput source="id" />
+        <TextInput source="name" />
+        <TextInput source="email" />
+        <TextInput source="body" />
+      </SimpleForm>
+    </Edit>
   );
 };

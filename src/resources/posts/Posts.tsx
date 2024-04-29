@@ -4,8 +4,10 @@ import {
   TextField,
   ReferenceField,
   ShowGuesser,
+  EditGuesser,
+  EditButton,
 } from "react-admin";
-import { CommentButton } from "../components/Buttons";
+import { CommentButton } from "../../components/Buttons";
 export const PostList = (props) => (
   <List {...props}>
     <Datagrid>
@@ -15,7 +17,10 @@ export const PostList = (props) => (
         <TextField source="name" />
       </ReferenceField>
       <CommentButton />
+      <EditButton />
     </Datagrid>
   </List>
 );
 export const PostShow = (props) => <ShowGuesser {...props} />;
+
+export const PostEdit = (props) => <EditGuesser {...props} />;
